@@ -48,7 +48,7 @@
       "Web/app-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "Web/app-content/plugins/{$name}/": ["type:wordpress-plugin"],
       "Web/app-content/themes/{$name}/": ["type:wordpress-theme"],
-		"./Packages/Framework": ["wpFlow/Configuration"]
+		"./Packages/Framework/{$name}": ["wpFlow/Configuration"]
     },
     "wordpress-install-dir": "Web/wp-core"
   }
