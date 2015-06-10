@@ -29,6 +29,10 @@
 	 {
 	 	"type": "vcs",
 		"url": "https://github.com/wpFlow/Configuration"
+	 },
+	 {
+	 	"type": "vcs",
+		"url": "https://github.com/wpFlow/FrameworkInstaller"
 	 }
   ],
   "require": {
@@ -36,6 +40,7 @@
     "composer/installers": "~1.0.12",
     "vlucas/phpdotenv": "~1.0.9",
     "johnpbloch/wordpress": "4.2.2",
+	 "wpFlow/FrameworkInstaller": "dev-master",
 	 "wpFlow/Configuration": "dev-master"
   },
   "extra": {
