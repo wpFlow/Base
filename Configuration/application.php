@@ -1,6 +1,6 @@
 <?php
 $root_dir = dirname(__DIR__);
-$webroot_dir = $root_dir . '/web';
+$webroot_dir = $root_dir . '/Web';
 
 /**
  * Use Dotenv to set required environment variables and load .env file in root
@@ -45,7 +45,7 @@ define('DB_PASSWORD', getenv('DB_PASSWORD'));
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
-$table_prefix = getenv('DB_PREFIX') ?: 'wp_';
+$table_prefix = getenv('DB_PREFIX') ?: 'wpFlow_';
 
 /**
  * Authentication Unique Keys and Salts
