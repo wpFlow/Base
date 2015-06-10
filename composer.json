@@ -40,14 +40,15 @@
     "composer/installers": "~1.0.12",
     "vlucas/phpdotenv": "~1.0.9",
     "johnpbloch/wordpress": "4.2.2",
-	 "wpFlow/FrameworkInstaller": "dev-master",
+	 "mnsami/composer-custom-directory-installer": "1.0.*",
 	 "wpFlow/Configuration": "dev-master"
   },
   "extra": {
     "installer-paths": {
       "Web/app-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "Web/app-content/plugins/{$name}/": ["type:wordpress-plugin"],
-      "Web/app-content/themes/{$name}/": ["type:wordpress-theme"]
+      "Web/app-content/themes/{$name}/": ["type:wordpress-theme"],
+		"./Packages/Framework": ["wpFlow/Configuration"]
     },
     "wordpress-install-dir": "Web/wp-core"
   }
