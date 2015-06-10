@@ -1,0 +1,49 @@
+{
+  "name": "wpFlow/Base",
+  "type": "project",
+  "license": "MIT",
+  "description": "More than just a modern WordPress stack",
+  "homepage": "https://vectoholic.de",
+  "authors": [
+    {
+      "name": "Dennis Schröder",
+      "email": "info@vectoholic.com",
+      "homepage": "https://github.com/vectohlic"
+    }
+  ],
+  "keywords": [
+    "vectoholic", "wpFlow", "wordpress", "stack", "composer", "vagrant", "wp", "Framework", "OOP","wpFlow"
+  ],
+  "support": {
+    "issues": "https://github.com/wpFlow/Base/issues"
+  },
+  "config": {
+    "preferred-install": "dist",
+	 "vendor-dir": "Packages/Libraries"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    },
+	 {
+	 	"type": "vcs",
+		"url": "https://github.com/wpFlow/Configuration"
+	 }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "composer/installers": "~1.0.12",
+    "vlucas/phpdotenv": "~1.0.9",
+    "johnpbloch/wordpress": "4.2.2",
+	 "wpFlow/Configuration": "dev-master"
+  },
+  "extra": {
+    "installer-paths": {
+      "Web/app-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "Web/app-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "Web/app-content/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "Web/wp-core"
+  }
+}
