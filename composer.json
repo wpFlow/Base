@@ -31,8 +31,8 @@
 		"url": "https://github.com/wpFlow/Configuration"
 	 },
 	 {
-	 	"type": "vcs",
-		"url": "https://github.com/wpFlow/FrameworkInstaller"
+		 "type": "vcs",
+		 "url": "https://github.com/janvennemann/typo3-fluid-standalone"
 	 }
   ],
   "require": {
@@ -41,7 +41,8 @@
     "vlucas/phpdotenv": "~1.0.9",
     "johnpbloch/wordpress": "4.2.2",
 	 "mnsami/composer-custom-directory-installer": "1.0.*",
-	 "wpFlow/Configuration": "dev-master"
+	 "wpFlow/Configuration": "dev-master",
+	 "janvennemann/typo3-fluid-standalone": "dev-master"	 
   },
   "extra": {
     "installer-paths": {
