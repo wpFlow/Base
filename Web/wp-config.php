@@ -4,6 +4,72 @@
  * This file is required in the root directory so WordPress can find it.
  * WP is hardcoded to look in its own directory or one directory up for wp-config.php.
  */
-require_once(dirname(__DIR__) . 'Packages/Libraries/autoload.php');
+require_once(dirname(__DIR__) . '/Packages/Libraries/autoload.php');
 require_once(dirname(__DIR__) . '/Configuration/application.php');
+
+
+/**
+ * Defining the tableprefix for Wordpress
+ * @var  $table_prefix
+ */
+$table_prefix = 'wpFlow_';
+
+require(ROOT_DIR . '/Packages/Framework/wpFlow.Core/Classes/wpFlow/Core/Bootstrap.php');
+
+$context = \wpFlow\Core\Bootstrap::getEnvironmentConfigurationSetting('WPFLOW_CONTEXT') ?: 'Development';
+$bootstrap =  \wpFlow\Core\Bootstrap::getInstance($context);
+$bootstrap->run();
+
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\ConfigCache;
+use Symfony\Component\Config\Definition\Processor;
+use Symfony\Component\Config\Resource\FileResource;
+use wpFlow\Configuration\YamlConfigLoader;
+use wpFlow\Configuration\Configuration;
+
+$cachePath = ROOT_DIR.'/Data/config.php';
+$configFile = 'config.yml';
+
+// the second argument is to enable/disable debugging
+$cache = new ConfigCache($cachePath, true);
+
+if ( !$cache->isFresh()  ) {
+    // directories of config files
+    $directories = array(ROOT_DIR.'/Packages/Framework/wpFlow.Configuration/Configuration');
+    $locator = new FileLocator($directories);
+
+
+
+    // convert the config file into an array
+    $loader = new YamlConfigLoader($locator);
+    $configFilePath = $locator->locate($configFile);
+    $configValues = $loader->load(file_get_contents($configFilePath));
+
+    $resource = new FileResource($configFilePath);
+
+    // process the array using the defined configuration
+    $processor = new Processor();
+    $configuration = new Configuration();
+
+    try {
+        $processedConfiguration = $processor->processConfiguration(
+            $configuration,
+            $configValues
+        );
+
+        // serialize the config array and save it
+        $cache->write(serialize($processedConfiguration), array($resource));
+    } catch (Exception $e) {
+        // validation error
+        echo $e->getMessage() . PHP_EOL;
+    }
+}
+
+$cachedYaml = file_get_contents($cachePath);
+$cachedYaml = unserialize($cachedYaml);
+
+dump($cachedYaml);
+
+
+
 require_once(ABSPATH . 'wp-settings.php');

@@ -29,10 +29,6 @@
 	 {
 	 	"type": "vcs",
 		"url": "https://github.com/wpFlow/Configuration"
-	 },
-	 {
-		 "type": "vcs",
-		 "url": "https://github.com/janvennemann/typo3-fluid-standalone"
 	 }
   ],
   "require": {
@@ -42,7 +38,7 @@
     "johnpbloch/wordpress": "4.2.2",
 	 "mnsami/composer-custom-directory-installer": "1.0.*",
 	 "wpFlow/Configuration": "dev-master",
-	 "janvennemann/typo3-fluid-standalone": "dev-master"	 
+	 "namelesscoder/fluid": "1.1.0"	 
   },
   "extra": {
     "installer-paths": {
@@ -52,5 +48,8 @@
 		"./Packages/Framework/wpFlow.Configuration": ["wpFlow/Configuration"]
     },
     "wordpress-install-dir": "Web/wp-core"
-  }
+  },
+  "autoload": {
+          "classmap": ["Packages/Framework/"]
+      }
 }
